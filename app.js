@@ -10,7 +10,8 @@ var app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.set('port', 3000);
+var port = process.env.PORT; //|| 3000;
+app.set('port', port);
 
 // Connect to MongoDB database via Mongoose library
 mongoose.connect('mongodb://siri:426N4thave@ds117485.mlab.com:17485/siri');
