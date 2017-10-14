@@ -8,7 +8,7 @@ class DogList extends React.Component {
     }
   
     componentWillMount() {
-      axios.get('/api/beers')
+      axios.get('/api/dogs')
         .then((response) => {
           console.log(response)
           this.setState({

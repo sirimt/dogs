@@ -20,6 +20,9 @@ app.set('port', port);
 mongoose.connect('');
 var db = mongoose.connection;
 
+// var promise = mongoose.connect('mongodb://admin:RHyudhovtitsOs5@ds113795.mlab.com:13795/beerfavs', {
+//   useMongoClient: true,
+// });
 // RESTful API
 app.get('/', (req, res) => {
 	res.send('Please use /api/dogs');
