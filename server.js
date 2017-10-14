@@ -10,11 +10,14 @@ var app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+// Serve up ./public folder
+app.use(express.static('public'));
+
 var port = process.env.PORT; //|| 3000;
 app.set('port', port);
 
 // Connect to MongoDB database via Mongoose library
-mongoose.connect('mongodb://siri:426N4thave@ds117485.mlab.com:17485/siri');
+mongoose.connect('');
 var db = mongoose.connection;
 
 // RESTful API
@@ -22,7 +25,7 @@ app.get('/', (req, res) => {
 	res.send('Please use /api/dogs');
 });
 
-// Get beer list
+// Get dog list
 app.get('/api/dogs', (req, res) => {
 	Dog.find((err, dogs) => {
 		if(err){
@@ -32,8 +35,8 @@ app.get('/api/dogs', (req, res) => {
 	});
 });
 
-// Get one specific beer by id
-// UNCOMMENT FUNCTION BELOW ONCE YOU SOLVED GETTING ALL BEERS
+// Get one specific dog by id
+// UNCOMMENT FUNCTION BELOW ONCE YOU SOLVED GETTING ALL DOGS
 app.get('/api/dogs/:_id', (req, res) => {
 	Dog.findById(req.params._id, (err, dog) => {
 		if(err){
@@ -43,8 +46,8 @@ app.get('/api/dogs/:_id', (req, res) => {
 	});
 });
 
-// Add new beer to list
-// UNCOMMENT FUNCTION BELOW ONCE YOU SOLVED GETTING ONE BEER
+// Add new dog to list
+// UNCOMMENT FUNCTION BELOW ONCE YOU SOLVED GETTING ONE DOG
 app.post('/api/dogs', (req, res) => {
 	var newDog = req.body;
 	Dog.create(newDog, (err, dog) => {
