@@ -1,8 +1,9 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
 
 var Dog = require('./models/dog');
-var mongoose = require('mongoose');
+
 var app = express();
 
 // configure app to use bodyParser()
@@ -13,16 +14,14 @@ app.use(bodyParser.json());
 // Serve up ./public folder
 app.use(express.static('public'));
 
-var port = process.env.PORT; //|| 3000;
+var port = process.env.PORT;   
 app.set('port', port);
 
-// Connect to MongoDB database via Mongoose library
-mongoose.connect('');
-var db = mongoose.connection;
+// Connect to MLab MongoDB database "beerFavs" via mongoose
+var promise = mongoose.connect('mongodb://siri:426N4thave@ds117485.mlab.com:17485/siri', {
+  useMongoClient: true,
+});
 
-// var promise = mongoose.connect('mongodb://admin:RHyudhovtitsOs5@ds113795.mlab.com:13795/beerfavs', {
-//   useMongoClient: true,
-// });
 // RESTful API
 app.get('/', (req, res) => {
 	res.send('Please use /api/dogs');
