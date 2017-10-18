@@ -1,11 +1,13 @@
-// class DogList extends React.Component {
+class DogList extends React.Component {
   
-//     constructor(props) {
-//       super(props);
-//       this.state = {
-//         dogs: []
-//       };
-//     }
+    constructor(props) {
+      super(props);
+      this.state = {
+        dogs: [
+          {name:"Dally"},{name: "Windy"},{name: "Jazz"}
+        ]
+      };
+    }
   
 //     componentWillMount() {
 //       axios.get('/api/dogs')
@@ -19,21 +21,20 @@
 //         });
 //     }
   
-//     render() {
-//       let dogNames = this.state.dogs.map( (dog) => {
-//         return <li>{ dog.name }</li>
-//       });
+    render() {
+      let dogNames = this.state.dogs.map( (dog) => {
+        return <li>{ dog.name }</li>
+      });
       
-//       return (
-//         <ul>
-//           { dogNames }
-//         </ul>
-//       );
-//     }
-//   }
+      return (
+        <ul>
+          { dogNames }
+        </ul>
+      );
+    }
+  }
   
   ReactDOM.render(
-    <h1>Hello Siri</h1>,
-   // <DogList />,
+    <DogList />,
     document.getElementById('root')
   );
