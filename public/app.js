@@ -10,7 +10,6 @@ class DogList extends React.Component {
     componentWillMount() {
       axios.get('/api/dogs')
         .then((response) => {
-          console.log(response)
           this.setState({
             dogs: response.data
           })
@@ -21,13 +20,13 @@ class DogList extends React.Component {
     }
   
     render() {
-      let dognames = this.state.dogs.map( (dog) => {
+      let dogNames = this.state.dogs.map( (dog) => {
         return <li>{ dog.name }</li>
       });
       
       return (
         <ul>
-          { dognames }
+          { dogNames }
         </ul>
       );
     }
