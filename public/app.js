@@ -8,18 +8,17 @@ class DogList extends React.Component {
         ]
       };
     }
-  
-//     componentWillMount() {
-//       axios.get('/api/dogs')
-//         .then((response) => {
-//           this.setState({
-//             dogs: response.data
-//           })
-//         })
-//         .catch((error) => {
-//           console.log(error);
-//         });
-//     }
+    componentWillMount() {
+      axios.get('/api/dogs')
+        .then((response) => {
+          this.setState({
+            dogs: response.data
+          })
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   
     render() {
       let dogNames = this.state.dogs.map( (dog) => {
