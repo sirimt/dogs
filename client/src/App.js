@@ -8,6 +8,7 @@ class App extends Component {
     this.state = {
       dogs: []
     };
+    this.handleClick = this.handleClick.bind(this);
   }
   componentWillMount() {
     axios.get('/api/dogs')
@@ -20,15 +21,34 @@ class App extends Component {
         console.log(error);
       });
   }
+  handleClick(id) {
+    console.log(id);
+    var newDogList = this.state.dogs;
+    for (var i = 0; i < newDogList.length; i++) {
+      if ( id === newDogList[i].id) {
+        newDogList.splice(i,1);
+      }
+    }
+    axios.delete('/api/dogs/'+id)
+    .then((response) => {
+      console.log(response);
+      this.setState({
+        dogs: newDogList
+      })
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  }
 
   render() {
     let dogNames = this.state.dogs.map( (dog) => {
-      return <li>{ dog.name }</li>
+      return <li key={dog.id} >{ dog.name } <button onClick={(e) => this.handleClick(dog.id, e)} type="button">Delete Me!</button></li> 
     });
     
     return (
       <ul>
-        { dogNames }
+        { dogNames } 
       </ul>
     );
   }
