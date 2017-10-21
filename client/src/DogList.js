@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 class DogList extends Component {
   constructor(props) {
@@ -79,7 +80,8 @@ class DogList extends Component {
   render() {
    
     let dogNames = this.state.dogs.map( (dog) => {
-      return <li key={dog.id} >{ dog.name } <button onClick={(e) => this.handleDeleteDog(dog.id, e)} type="button">Delete Me!</button></li>
+      return <li key={dog.id} ><Link to={"/dogs/" + dog.id}> { dog.name } </Link>
+      <button onClick={(e) => this.handleDeleteDog(dog.id, e)} type="button">Delete Me!</button></li>
     });
     
     return (
