@@ -13,9 +13,7 @@ class DogList extends Component {
         newTemperment: ""
     };
     this.handleDeleteDog = this.handleDeleteDog.bind(this);
-    this.handleChangeName = this.handleChangeName.bind(this);
-    this.handleChangeAge = this.handleChangeAge.bind(this);
-    this.handleChangeTemperment = this.handleChangeTemperment.bind(this);    
+    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   componentWillMount() {
@@ -49,15 +47,11 @@ class DogList extends Component {
     });
   }
 
-  handleChangeName(event) {
-    this.setState({newName: event.target.value});
+  handleChange(event) {
+    this.setState({[event.target.name]: event.target.value});
+
   }
-  handleChangeAge(event) {
-    this.setState({newAge: event.target.value});
-  }
-  handleChangeTemperment(event) {
-    this.setState({newTemperment: event.target.value});
-  }
+
   handleSubmit(event) {
     var newDogList = this.state.dogs;
     axios.post('/api/dogs/', {
@@ -93,14 +87,14 @@ class DogList extends Component {
         </ul>
         <form onSubmit={this.handleSubmit} >
           Name:<br/>
-          <input type="text" onChange={this.handleChangeName}/><br/>
+          <input type="text" name="newName" onChange={this.handleChange}/><br/>
           Age:<br/>
-          <input type="number" onChange={this.handleChangeAge}/><br/>
+          <input type="number" name="newAge" onChange={this.handleChange}/><br/>
           Temperment:<br/>
-          <input type="text" onChange={this.handleChangeTemperment}/><br/>
+          <input type="text" name= "newTemperment" onChange={this.handleChange}/><br/>
           <button>Submit!</button> 
         </form>
-        </div>
+      </div>
     );
   }
 }
