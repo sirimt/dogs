@@ -1,16 +1,7 @@
 {
   "db": {
-    "name": "db",
-    "connector": "memory"
-  },
-  "dogs": {
-    "host": "",
-    "port": 0,
     "url": "mongodb://siri:426N4thave@ds117485.mlab.com:17485/siri",
-    "database": "",
-    "password": "",
-    "name": "dogs",
-    "user": "",
+    "name": "db",
     "connector": "mongodb"
   }
 }
