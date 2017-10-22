@@ -4,8 +4,8 @@ import axios from 'axios';
 import {Link} from 'react-router-dom';
 
 class DogDeTail extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       id: "",
         newName: "",
@@ -14,11 +14,16 @@ class DogDeTail extends Component {
     };
     
   }
-  componentWillMount() {
-    axios.get('/api/dogs/' + this.params.id)
+  componentDidMount() {
+    axios.get('/api/dogs/' + this.props.match.params.id)
       .then((response) => {
         this.setState({
-          dogs: response.data
+          id: response.data.id,
+          newName: response.data.name,
+          newAge: response.data.age,
+          newTemperment: response.data.temperment
+
+          
         })
       })
       .catch((error) => {
@@ -28,26 +33,14 @@ class DogDeTail extends Component {
 
 
   render() {
-   
-    let dogNames = this.state.dogs.map( (dog) => {
-      return <li key={dog.id} ><Link to={"/dogs/" + dog.id}> { dog.name } </Link>
-      <button onClick={(e) => this.handleDeleteDog(dog.id, e)} type="button">Delete Me!</button></li>
-    });
     
     return (
       <div>
-        <ul>
-          { dogNames } 
-        </ul>
-        <form onSubmit={this.handleSubmit} >
-          Name:<br/>
-          <input type="text" onChange={this.handleChangeName}/><br/>
-          Age:<br/>
-          <input type="number" onChange={this.handleChangeAge}/><br/>
-          Temperment:<br/>
-          <input type="text" onChange={this.handleChangeTemperment}/><br/>
-          <button>Submit!</button> 
-        </form>
+          Name: {this.state.newName}<br/>
+          Age: {this.state.newAge}<br/>
+          Temperment: {this.state.newTemperment}<br/>
+          <Link to={'/'}><button>Back to Dog List</button></Link> 
+          
         </div>
     );
   }

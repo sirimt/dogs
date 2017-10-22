@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import DogList from './DogList';
-import { BrowserRouter, Route, Switch} from 'react-router-dom'
+import { BrowserRouter, Switch, Route} from 'react-router-dom'
 import DogDeTail from './DogDeTail';
 
 class App extends Component {  
@@ -9,8 +9,8 @@ class App extends Component {
     return (
       <BrowserRouter>
       <Switch>
-        <Route path="/" component={DogList}/> 
-        <Route path="/dogs/:id" component={DogDeTail}/> 
+        <Route exact path="/" component={DogList}/> 
+        <Route exact path="/dogs/:id" component={DogDeTail}/> 
       </Switch>
       
      </BrowserRouter>
