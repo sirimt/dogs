@@ -4,8 +4,8 @@ import axios from 'axios';
 import {Link} from 'react-router-dom';
 
 class DogList extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       dogs: [],
         newName: "",
