@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import './App.css';
-import axios from 'axios';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
+import './App.css';
+
 
 class DogList extends Component {
   constructor(props) {
@@ -91,7 +92,7 @@ class DogList extends Component {
           Age:<br/>
           <input type="number" name="newAge" onChange={this.handleChange}/><br/>
           Temperment:<br/>
-          <input type="text" name= "newTemperment" onChange={this.handleChange}/><br/>
+          <input type="text" name= "temperment" onChange={this.handleChange}/><br/>
           <button>Submit!</button> 
         </form>
       </div>

@@ -38,5 +38,9 @@
   "dogs": {
     "dataSource": "db",
     "public": true
+  },
+  "dogOwner": {
+    "dataSource": "db",
+    "public": true
   }
 }

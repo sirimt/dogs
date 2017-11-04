@@ -1,23 +1,47 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Switch, Route} from 'react-router-dom'
 import './App.css';
 import DogList from './DogList';
-import { BrowserRouter, Switch, Route} from 'react-router-dom'
 import DogDeTail from './DogDeTail';
 import EditDog from './EditDog';
+import LogIn from './LogIn';
 
 class App extends Component {  
+  constructor(props) {
+    super(props);
+    this.state = {
+      accessToken:""
+    };
+    console.log(this.accessToken);
+    this.setAccessToken = this.setAccessToken.bind(this);
+  }
+
+  setAccessToken(newAccessToken)
+  {
+    this.setState({
+      accessToken: newAccessToken
+    })
+  }
   render() {
-    return (
-      <BrowserRouter>
-      <Switch>
-        <Route exact path="/" component={DogList}/> 
-        <Route exact path="/dogs/:id" component={DogDeTail}/> 
-        <Route exact path="/EditDog/:id" component={EditDog}/> 
-      </Switch>
-      
-     </BrowserRouter>
+      return (
+        <div>
+          <BrowserRouter>
+            <Switch>
+              <Route exact path="/" render={ ({ match, history }) => <DogList match={ match } history={ history } accessToken={ this.state.accessToken }/>}/> 
+              <Route exact path="/dogs/:id" render={ ({ match, history }) => <DogDeTail match={ match } history={ history } accessToken={ this.state.accessToken }/>} />
+              <Route exact path="/dog/update/:id" render={ ({ match, history }) => <EditDog match={ match } history={ history } accessToken={ this.state.accessToken }/>} />
+            </Switch>
+          </BrowserRouter>
+          {/* 
+            Pass down setAccessToken method to the child component "Login" via "onLogin" property
+          */}
+          <LogIn onLogin={ this.setAccessToken }/>
+        </div>
+      );
     
-    );
-}}
+    
+	}
+}
 
 export default App;
+
