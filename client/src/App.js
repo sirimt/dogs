@@ -7,12 +7,12 @@ import EditDog from './EditDog';
 import LogIn from './LogIn';
 
 class App extends Component {  
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       accessToken:""
-    };
-    console.log(this.accessToken);
+    }
+   
     this.setAccessToken = this.setAccessToken.bind(this);
   }
 
@@ -22,14 +22,15 @@ class App extends Component {
       accessToken: newAccessToken
     })
   }
+  
   render() {
       return (
         <div>
           <BrowserRouter>
             <Switch>
-              <Route exact path="/" render={ ({ match, history }) => <DogList match={ match } history={ history } accessToken={ this.state.accessToken }/>}/> 
+              <Route exact path="/" render={ ({ match, history }) => <DogList match={ match } history={ history } accessToken={ this.state.accessToken }/>} /> 
               <Route exact path="/dogs/:id" render={ ({ match, history }) => <DogDeTail match={ match } history={ history } accessToken={ this.state.accessToken }/>} />
-              <Route exact path="/dog/update/:id" render={ ({ match, history }) => <EditDog match={ match } history={ history } accessToken={ this.state.accessToken }/>} />
+              <Route exact path="/dogs/update/:id" render={ ({ match, history }) => <EditDog match={ match } history={ history } accessToken={ this.state.accessToken }/>} />
             </Switch>
           </BrowserRouter>
           {/* 
@@ -37,9 +38,7 @@ class App extends Component {
           */}
           <LogIn onLogin={ this.setAccessToken }/>
         </div>
-      );
-    
-    
+      ); 
 	}
 }
 

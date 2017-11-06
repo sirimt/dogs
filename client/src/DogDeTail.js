@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './App.css';
 import axios from 'axios';
-import {Link} from 'react-router-dom';
 
 class DogDeTail extends Component {
   constructor() {
@@ -12,7 +12,7 @@ class DogDeTail extends Component {
         newAge: 0,
         newTemperment: ""
     };
-    
+
   }
   componentDidMount() {
     axios.get('/api/dogs/' + this.props.match.params.id)

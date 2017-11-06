@@ -5,8 +5,8 @@ import './App.css';
 
 
 class DogList extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       dogs: [],
         newName: "",
