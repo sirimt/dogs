@@ -11,7 +11,7 @@ class DogList extends Component {
       dogs: [],
         newName: "",
         newAge: 0,
-        newTemperment: ""
+        newTemperament: ""
     };
     this.handleDeleteDog = this.handleDeleteDog.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -58,7 +58,7 @@ class DogList extends Component {
     axios.post('/api/dogs/', {
       name: this.state.newName,
       age: this.state.newAge,
-      temperment: this.state.newTemperment
+      temperament: this.state.newTemperament
     })
     .then((response) => {
       newDogList.push(response.data);          
@@ -91,8 +91,8 @@ class DogList extends Component {
           <input type="text" name="newName" onChange={this.handleChange}/><br/>
           Age:<br/>
           <input type="number" name="newAge" onChange={this.handleChange}/><br/>
-          Temperment:<br/>
-          <input type="text" name= "temperment" onChange={this.handleChange}/><br/>
+          Temperament:<br/>
+          <input type="text" name= "temperament" onChange={this.handleChange}/><br/>
           <button>Submit!</button> 
         </form>
       </div>

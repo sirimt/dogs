@@ -10,7 +10,7 @@ class DogDeTail extends Component {
       id: "",
         newName: "",
         newAge: 0,
-        newTemperment: ""
+        newTemperament: ""
     };
 
   }
@@ -21,7 +21,7 @@ class DogDeTail extends Component {
           id: response.data.id,
           newName: response.data.name,
           newAge: response.data.age,
-          newTemperment: response.data.temperment
+          newTemperament: response.data.temperament
 
           
         })
@@ -38,7 +38,7 @@ class DogDeTail extends Component {
       <div>
           Name: {this.state.newName}<br/>
           Age: {this.state.newAge}<br/>
-          Temperment: {this.state.newTemperment}<br/>
+          Temperament: {this.state.newTemperament}<br/>
           <Link to={'/'}><button>Back to Dog List</button></Link> 
           <Link to={'/EditDog/'+this.state.id}><button>Edit</button></Link>
         </div>

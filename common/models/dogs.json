@@ -17,7 +17,7 @@
       "type": "number",
       "required": true
     },
-    "temperment": {
+    "temperament": {
       "type": "string",
       "required": true
     }
