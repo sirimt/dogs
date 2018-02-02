@@ -14,7 +14,7 @@ class DogList extends Component {
         age: 0,
         temperment: ""
     }  
-    // this.handleDeleteDog = this.handleDeleteDog.bind(this);
+    this.handleDeleteDog = this.handleDeleteDog.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -30,25 +30,11 @@ class DogList extends Component {
     //     console.log(error);
     //   });
   }
-  // handleDeleteDog(id) {
-  //   console.log(id);
-  //   var newDogList = this.state.dogs;
-  //   for (var i = 0; i < newDogList.length; i++) {
-  //     if ( id === newDogList[i].id) {
-  //       newDogList.splice(i,1);
-  //     }
-  //   }
-  //   axios.delete('/api/dogs/'+id)
-  //   .then((response) => {
-  //     console.log(response);
-  //     this.setState({
-  //       dogs: newDogList
-  //     })
-  //   })
-  //   .catch((error) => {
-  //     console.log(error);
-  //   });
-  // }
+  handleDeleteDog(dog) {
+   this.props.delete({
+      dog
+   })
+  }
 
   handleChange(event) {
     this.setState({[event.target.name]: event.target.value});
@@ -76,7 +62,7 @@ class DogList extends Component {
     let dogNames = this.props.dogs.map( (dog) => {
       return (
         <li key={dog.id} ><Link to={'/dogs/' + dog.id}> { dog.name } </Link>
-        <button onClick={(e) => this.handleDeleteDog(dog.id, e)} type="button">Delete Me!</button></li>
+        <button onClick={(e) => this.handleDeleteDog(dog, e)} type="button">Delete Me!</button></li>
       )
     });
     

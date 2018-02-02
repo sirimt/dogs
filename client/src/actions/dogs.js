@@ -9,3 +9,12 @@ export function addDog(dog) {
     dog: Object.assign({}, dog, {id: ++nextDogId})
   }
 }
+export const DELETE_DOG = 'DELETE_DOG';
+
+export function deleteDog(dog) {
+  console.log(dog);
+  return {
+    type: DELETE_DOG,
+    dog: dog
+  }
+}
