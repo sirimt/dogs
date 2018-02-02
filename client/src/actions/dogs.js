@@ -6,6 +6,6 @@ export function addDog(dog) {
   console.log(dog);
   return {
     type: ADD_DOG,
-    dog: Object.assign({}, dog, {id: nextDogId++})
+    dog: Object.assign({}, dog, {id: ++nextDogId})
   }
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import DOGADD from './DogList';
+// import DOGADD from './DogList';
 import {Link} from 'react-router-dom';
 // import axios from 'axios';
 import './App.css';
@@ -8,15 +8,15 @@ import './App.css';
 class DogList extends Component {
   constructor(props) {
     super(props);
-   
-      // dogs: [],
-      //   newName: "",
-      //   newAge: 0,
-      //   newTemperament: ""
-
+    this.state= {
+      dogs: [],
+        name: "",
+        age: 0,
+        temperment: ""
+    }  
     // this.handleDeleteDog = this.handleDeleteDog.bind(this);
-    // this.handleChange = this.handleChange.bind(this);
-    // this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   componentWillMount() {
     console.log(this.props)
@@ -50,32 +50,29 @@ class DogList extends Component {
   //   });
   // }
 
-  // handleChange(event) {
-  //   this.setState({[event.target.name]: event.target.value});
+  handleChange(event) {
+    this.setState({[event.target.name]: event.target.value});
 
-  // }
+  }
+  // handleInputChange(e) {
 
-  // handleSubmit(event) {
-  //   var newDogList = this.state.dogs;
-  //   axios.post('/api/dogs/', {
-  //     name: this.state.newName,
-  //     age: this.state.newAge,
-  //     temperament: this.state.newTemperament
-  //   })
-  //   .then((response) => {
-  //     newDogList.push(response.data);          
-  //     console.log(response);
-  //     this.setState({
-  //       dogs: newDogList
-  //     })
-  //   })
-  //   .catch((error) => {
-  //     console.log(error);
+  //   this.setState({
+  //     [e.target.name]: e.target.value 
   //   });
   // }
 
+  handleSubmit(event) {
+    event.preventDefault();
+    console.log(this.props)
+    this.props.action({
+      name: this.state.name,
+      age: this.state.age,
+      temperment: this.state.temperment
+    })
+  }
+
   render() {
-   
+   console.log(this.props)
     let dogNames = this.props.dogs.map( (dog) => {
       return (
         <li key={dog.id} ><Link to={'/dogs/' + dog.id}> { dog.name } </Link>
@@ -90,11 +87,11 @@ class DogList extends Component {
         </ul>
         <form onSubmit={this.handleSubmit} >
           Name:<br/>
-          <input type="text" name="newName" onChange={this.handleChange}/><br/>
+          <input type="text" name="name" onChange={this.handleChange}/><br/>
           Age:<br/>
-          <input type="number" name="newAge" onChange={this.handleChange}/><br/>
+          <input type="number" name="age" onChange={this.handleChange}/><br/>
           Temperament:<br/>
-          <input type="text" name= "temperament" onChange={this.handleChange}/><br/>
+          <input type="text" name= "temperment" onChange={this.handleChange}/><br/>
           <button>Submit!</button> 
         </form>
       </div>

@@ -18,6 +18,7 @@ export default function dogs(state = initialState, action) {
       return [
         ...state,
         {
+          id: action.dog.id,
           name: action.dog.name,
           age: action.dog.age,
           temperment: action.dog.temperment
