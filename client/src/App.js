@@ -23,7 +23,7 @@ class App extends Component {
           <BrowserRouter>
             <Switch>
               <Route exact path="/" render={ ({ match, history, dogs }) => <DogList match={ match } history={ history } dogs={ this.props.dogs } action={ this.props.actions.addDog } delete={this.props.actions.deleteDog}/>} /> 
-              <Route exact path="/dogs/:id" render={ ({ match, history }) => <DogDeTail match={ match } history={ history }/>} />
+              <Route exact path="/dogs/:id" render={ ({ match, history }) => <DogDeTail match={ match } history={ history } dogs={ this.props.dogs}/>} />
               <Route exact path="/dogs/update/:id" render={ ({ match, history }) => <EditDog match={ match } history={ history } updateDog={ this.props.actions.updateDog }/>} />
             </Switch>
           </BrowserRouter>

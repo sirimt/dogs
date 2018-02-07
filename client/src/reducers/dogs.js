@@ -12,6 +12,12 @@ const initialState = [
     age: 6,
     temperment: 'cool'
 
+  },
+  {
+    id: 1,
+    name: 'Mouse',
+    age: 10,
+    temperment: 'small'
   }
 ]
 
