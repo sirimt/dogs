@@ -4,13 +4,10 @@ import axios from 'axios';
 import {Link} from 'react-router-dom';
 
 class EditDog extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      id: "",
-        newName: "",
-        newAge: 0,
-        newTemperament: ""
+      id: props.match.params.id,
     };
     this.handleChangeName = this.handleChangeName.bind(this);
     this.handleChangeAge = this.handleChangeAge.bind(this);
@@ -18,50 +15,27 @@ class EditDog extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     
   }
-  componentDidMount() {
-    axios.get('/api/dogs/' + this.props.match.params.id)
-      .then((response) => {
-        //console.log(response);
-        this.setState({
-          id: response.data.id,
-          newName: response.data.name,
-          newAge: response.data.age,
-          newTemperament: response.data.temperament         
-        })
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    }
+  componentWillMount() {
+    this.setState(
+      this.props.dogs.find(dog => dog.id === parseInt(this.state.id))  
+    )
+    console.log(this.state);
+  }
 
     handleChangeName(event) {
-      this.setState({newName: event.target.value});
+      this.setState({name: event.target.value});
     }
     handleChangeAge(event) {
-      this.setState({newAge: event.target.value});
+      this.setState({age: event.target.value});
     }
     handleChangeTemperament(event) {
-      this.setState({newTemperament: event.target.value});
+      this.setState({temperment: event.target.value});
     }
     handleSubmit(event) {
+      event.preventDefault()
       var updateDog = this.state;
+      this.props.updateDog(parseInt(this.state.id), updateDog);
       console.log (updateDog)
-      axios.put('/api/dogs/'+ this.props.match.params.id, {
-            id: this.state.id,
-        name: this.state.newName,
-        age: this.state.newAge,
-        temperament: this.state.newTemperament
-      })
-      .then((response) => {
-        updateDog.push(response.data);          
-        console.log(response);
-        this.setState({
-          dogs: updateDog
-        })
-      })
-      .catch((error) => {
-        console.log(error);
-      });
     }
 
   render() {
@@ -70,11 +44,11 @@ class EditDog extends Component {
       <div>
      <form onSubmit={this.handleSubmit} >
           Name:<br/>
-          <input type="text" onChange={this.handleChangeName} value={this.state.newName}/><br/>
+          <input type="text" name="name" onChange={this.handleChangeName} value={this.state.name}/><br/>
           Age:<br/>
-          <input type="number" onChange={this.handleChangeAge} value={this.state.newAge}/><br/>
+          <input type="number" name="age" onChange={this.handleChangeAge} value={this.state.age}/><br/>
           Temperament:<br/>
-          <input type="text" onChange={this.handleChangeTemperament} value={this.state.newTemperament}/><br/>
+          <input type="text" name="temperment" onChange={this.handleChangeTemperament} value={this.state.temperment}/><br/>
           <button>Update Dog!</button> 
           <Link to={'/'}><button>Back to DogList</button></Link>                               
         </form>

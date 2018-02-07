@@ -38,12 +38,11 @@ export default function dogs(state = initialState, action) {
         dog.id !== action.id
       )
       case UPDATE_DOG:
-          return state.map((s) => {
-            if (s.id !== action.dog.id) {
-              return s;
-            }
-            return action.dog;
-          });
+      return state.map(dog =>
+        dog.id === action.id ?
+          action.dog :
+          dog
+      )
     default:
       return state
   }

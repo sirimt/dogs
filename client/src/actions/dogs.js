@@ -20,10 +20,11 @@ export function deleteDog(id) {
 }
 export const UPDATE_DOG = 'UPDATE_DOG';
 
-export function updateDog(dog) {
-  console.log(dog);
+export function updateDog(id, dog) {
+  console.log(id, dog);
   return {
     type: UPDATE_DOG,
+    id: id, 
     dog: dog
   }
 }

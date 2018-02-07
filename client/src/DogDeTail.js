@@ -27,7 +27,7 @@ class DogDeTail extends Component {
           Age: {this.state.age}<br/>
           Temperament: {this.state.temperment}<br/>
           <Link to={'/'}><button>Back to Dog List</button></Link> 
-          <Link to={'/EditDog/'+this.state.id}><button>Edit</button></Link>
+          <Link to={'/dogs/update/'+this.state.id}><button>Edit</button></Link>
         </div>
     );
   }
