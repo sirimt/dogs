@@ -30,10 +30,10 @@ class DogList extends Component {
     //     console.log(error);
     //   });
   }
-  handleDeleteDog(dog) {
-   this.props.delete({
-      dog
-   })
+  handleDeleteDog(id) {
+   this.props.delete(
+      id
+      )
   }
 
   handleChange(event) {
@@ -62,7 +62,7 @@ class DogList extends Component {
     let dogNames = this.props.dogs.map( (dog) => {
       return (
         <li key={dog.id} ><Link to={'/dogs/' + dog.id}> { dog.name } </Link>
-        <button onClick={(e) => this.handleDeleteDog(dog, e)} type="button">Delete Me!</button></li>
+        <button onClick={(e) => this.handleDeleteDog(dog.id, e)} type="button">Delete Me!</button></li>
       )
     });
     

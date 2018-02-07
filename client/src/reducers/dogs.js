@@ -1,6 +1,7 @@
 import {
   ADD_DOG,
-  DELETE_DOG
+  DELETE_DOG,
+  UPDATE_DOG
 } from '../actions/dogs'
 
 
@@ -27,12 +28,16 @@ export default function dogs(state = initialState, action) {
         }
       ]
       case DELETE_DOG:
-          const newState = Object.assign([], state);
-          const indexOfDogToDelete = state.findIndex(dog => {
-            return dog.id === action.dog.id;
-          })
-          newState.splice(indexOfDogToDelete, 1);
-          return newState;
+      return state.filter(dog =>
+        dog.id !== action.id
+      )
+      case UPDATE_DOG:
+          return state.map((s) => {
+            if (s.id !== action.dog.id) {
+              return s;
+            }
+            return action.dog;
+          });
     default:
       return state
   }

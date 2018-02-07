@@ -11,10 +11,19 @@ export function addDog(dog) {
 }
 export const DELETE_DOG = 'DELETE_DOG';
 
-export function deleteDog(dog) {
-  console.log(dog);
+export function deleteDog(id) {
+  console.log(id);
   return {
     type: DELETE_DOG,
+    id: id
+  }
+}
+export const UPDATE_DOG = 'UPDATE_DOG';
+
+export function updateDog(dog) {
+  console.log(dog);
+  return {
+    type: UPDATE_DOG,
     dog: dog
   }
 }
