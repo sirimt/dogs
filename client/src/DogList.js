@@ -19,7 +19,6 @@ class DogList extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   componentWillMount() {
-    console.log(this.props)
     // axios.get('/api/dogs')
     //   .then((response) => {
     //     this.setState({
@@ -27,7 +26,6 @@ class DogList extends Component {
     //     })
     //   })
     //   .catch((error) => {
-    //     console.log(error);
     //   });
   }
   handleDeleteDog(id) {
@@ -49,7 +47,6 @@ class DogList extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this.props)
     this.props.action({
       name: this.state.name,
       age: this.state.age,
@@ -58,7 +55,6 @@ class DogList extends Component {
   }
 
   render() {
-   console.log(this.props)
     let dogNames = this.props.dogs.map( (dog) => {
       return (
         <li key={dog.id} ><Link to={'/dogs/' + dog.id}> { dog.name } </Link>

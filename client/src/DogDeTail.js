@@ -15,7 +15,6 @@ class DogDeTail extends Component {
     this.setState(
       this.props.dogs.find(dog => dog.id === parseInt(this.state.id))  
     )
-    console.log(this.state);
   }
 
 

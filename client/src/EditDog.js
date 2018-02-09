@@ -19,7 +19,6 @@ class EditDog extends Component {
     this.setState(
       this.props.dogs.find(dog => dog.id === parseInt(this.state.id))  
     )
-    console.log(this.state);
   }
 
     handleChangeName(event) {
@@ -35,7 +34,6 @@ class EditDog extends Component {
       event.preventDefault()
       var updateDog = this.state;
       this.props.updateDog(parseInt(this.state.id), updateDog);
-      console.log (updateDog)
     }
 
   render() {
