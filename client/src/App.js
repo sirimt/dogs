@@ -8,6 +8,7 @@ import EditDog from './EditDog';
 import * as dogActions from './actions/dogs';
 import { bindActionCreators } from 'redux';
 
+
 class App extends Component {  
   // constructor(props) {
   //   super(props);
@@ -21,7 +22,7 @@ class App extends Component {
         <div>
           <BrowserRouter>
             <Switch>
-              <Route exact path="/" render={ ({ match, history, dogs }) => <DogList match={ match } history={ history } dogs={ this.props.dogs } action={ this.props.actions.addDog } delete={this.props.actions.deleteDog}/>} /> 
+              <Route exact path="/" render={ ({ match, history, dogs }) => <DogList match={ match } history={ history } dogs={ this.props.dogs } action={ this.props.actions.addDog } delete={this.props.actions.deleteDog} fetchDogs={this.props.actions.fetchDogs}/>} /> 
               <Route exact path="/dogs/:id" render={ ({ match, history }) => <DogDeTail match={ match } history={ history } dogs={ this.props.dogs}/>} />
               <Route exact path="/dogs/update/:id" render={ ({ match, history }) => <EditDog match={ match } history={ history } dogs={ this.props.dogs} updateDog={ this.props.actions.updateDog }/>} />
             </Switch>
@@ -32,7 +33,7 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({
-  dogs: state.dogs
+  dogs: state.dogs.dogs
 })
 
 const mapDispatchToProps = dispatch => ({

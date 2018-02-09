@@ -1,6 +1,11 @@
+import axios from 'axios';
+
+
 let nextDogId = 0;
 
 export const ADD_DOG = 'ADD_DOG';
+export const FETCH_DOG = 'FETCH_DOG';
+export const FETCH_DOG_FULFILLED = 'FETCH_DOG_FULFILLED';
 
 export function addDog(dog) {
   return {
@@ -23,5 +28,11 @@ export function updateDog(id, dog) {
     type: UPDATE_DOG,
     id: id, 
     dog: dog
+  }
+}
+export function fetchDogs() {
+  return {
+    type: FETCH_DOG,
+    payload: axios.get('/api/dogs/')
   }
 }

@@ -1,28 +1,23 @@
 import {
   ADD_DOG,
   DELETE_DOG,
-  UPDATE_DOG
+  UPDATE_DOG,
+  FETCH_DOG_FULFILLED
 } from '../actions/dogs'
 
 
-const initialState = [
-  {
-		id: 0,
-    name: 'Thunder Monkey',
-    age: 6,
-    temperment: 'cool'
-
-  },
-  {
-    id: 1,
-    name: 'Mouse',
-    age: 10,
-    temperment: 'small'
-  }
-]
+const initialState = {
+  dogs: []
+}
 
 export default function dogs(state = initialState, action) {
   switch (action.type) {
+    case FETCH_DOG_FULFILLED:
+      return {
+        ...state,
+        dogs: action.payload.data
+  
+      }
     case ADD_DOG:
       return [
         ...state,

@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-// import DOGADD from './DogList';
 import {Link} from 'react-router-dom';
-// import axios from 'axios';
 import './App.css';
 
 
@@ -19,14 +17,8 @@ class DogList extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   componentWillMount() {
-    // axios.get('/api/dogs')
-    //   .then((response) => {
-    //     this.setState({
-    //       dogs: response.data
-    //     })
-    //   })
-    //   .catch((error) => {
-    //   });
+    this.props.fetchDogs(
+    )
   }
   handleDeleteDog(id) {
    this.props.delete(
