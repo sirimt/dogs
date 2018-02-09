@@ -2,7 +2,8 @@ import {
   ADD_DOG,
   DELETE_DOG,
   UPDATE_DOG,
-  FETCH_DOG_FULFILLED
+  FETCH_DOG_FULFILLED,
+  ADD_DOG_FULFILLED
 } from '../actions/dogs'
 
 
@@ -18,16 +19,11 @@ export default function dogs(state = initialState, action) {
         dogs: action.payload.data
   
       }
-    case ADD_DOG:
-      return [
+    case ADD_DOG_FULFILLED:
+      return {
         ...state,
-        {
-          id: action.dog.id,
-          name: action.dog.name,
-          age: action.dog.age,
-          temperment: action.dog.temperment
+        dogs: [...state.dogs, action.payload.data]    
         }
-      ]
       case DELETE_DOG:
       return state.filter(dog =>
         dog.id !== action.id

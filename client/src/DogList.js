@@ -10,7 +10,7 @@ class DogList extends Component {
       dogs: [],
         name: "",
         age: 0,
-        temperment: ""
+        temperament: ""
     }  
     this.handleDeleteDog = this.handleDeleteDog.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -42,7 +42,7 @@ class DogList extends Component {
     this.props.action({
       name: this.state.name,
       age: this.state.age,
-      temperment: this.state.temperment
+      temperament: this.state.temperament
     })
   }
 
@@ -65,7 +65,7 @@ class DogList extends Component {
           Age:<br/>
           <input type="number" name="age" onChange={this.handleChange}/><br/>
           Temperament:<br/>
-          <input type="text" name= "temperment" onChange={this.handleChange}/><br/>
+          <input type="text" name= "temperament" onChange={this.handleChange}/><br/>
           <button>Submit!</button> 
         </form>
       </div>

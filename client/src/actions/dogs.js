@@ -1,16 +1,18 @@
 import axios from 'axios';
 
 
-let nextDogId = 0;
+// let nextDogId = 0;
 
 export const ADD_DOG = 'ADD_DOG';
 export const FETCH_DOG = 'FETCH_DOG';
 export const FETCH_DOG_FULFILLED = 'FETCH_DOG_FULFILLED';
+export const ADD_DOG_FULFILLED = 'ADD_DOG_FULFILLED';
 
 export function addDog(dog) {
+  console.log(dog);
   return {
     type: ADD_DOG,
-    dog: Object.assign({}, dog, {id: ++nextDogId})
+    payload: axios.post('/api/dogs/', dog)
   }
 }
 export const DELETE_DOG = 'DELETE_DOG';
